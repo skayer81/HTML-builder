@@ -6,7 +6,6 @@ const { stdin: input, stdout: output } = require('node:process');
 const stream = fs.createWriteStream(path.resolve(__dirname, 'text.txt'));
 const rl = readline.createInterface({ input, output });
 
-//rl.prompt();
 output.write('введите текст для записи в файл:');
 rl.on('line', (input) => {
   if (input === 'exit') {
