@@ -14,10 +14,9 @@ async function delDir(dir) {
         else { await fsPromises.rm(path.resolve(dir, file.name), { recursive: true }, () => { return delDir(path.resolve(dir, file.name)); }); }
       }
     });
- // await fsPromises.rm(path.resolve(newDir))  
 }  
 
-async function createDir(newDir, folder) {
+async function createDir(newDir) {
   return fsPromises.mkdir(path.resolve(newDir), { recursive: true });
 }
 
