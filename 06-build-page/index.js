@@ -14,10 +14,11 @@ async function delDir(dir) {
         else { await fsPromises.rm(path.resolve(dir, file.name), { recursive: true }, () => { return delDir(path.resolve(dir, file.name)); }); }
       }
     });
+ // await fsPromises.rm(path.resolve(newDir))  
 }  
 
-function createAssets(newDir, folder) {
-  return fs.mkdir(path.resolve(newDir, folder), { recursive: true });
+async function createDir(newDir, folder) {
+  return fsPromises.mkdir(path.resolve(newDir), { recursive: true });
 }
 
 async function copyAssets(assetsDir, newDir) {
@@ -66,6 +67,7 @@ async function buildHTML(componentsDir, newDir, template) {
 }
 
 async function buildPage() {
+  await createDir(newDir); 
   await delDir(newDir);
   await copyAssets(assetsDir, path.resolve(newDir, 'assets'));
   await buildCSS(cssDir, newDir);
