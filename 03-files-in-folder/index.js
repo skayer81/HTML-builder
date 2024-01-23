@@ -8,12 +8,12 @@ readdir
         readdir
           .stat(path.resolve(__dirname, 'secret-folder', file.name))
           .then((stat) => {
-            console.log(`${String(file.name).slice(
-                  0,
-                  String(file.name).lastIndexOf('.'),
-                )} - ${String(path.extname(file.name)).slice(1)} - ${
-                  stat.size
-                }b`);
+            console.log(
+              `${String(file.name).slice(
+                0,
+                String(file.name).lastIndexOf('.'),
+              )} - ${String(path.extname(file.name)).slice(1)} - ${stat.size}b`,
+            );
           });
       }
     }
